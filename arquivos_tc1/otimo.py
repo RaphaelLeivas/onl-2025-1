@@ -1,5 +1,5 @@
 import numpy as np
-from matplotlib import pyplot as plt
+# from matplotlib import pyplot as plt
 from numpy.linalg import inv, norm
 
 class Solution:
@@ -25,29 +25,29 @@ class Solution:
                 f[i, j] = func(np.array([x1[i, j], x2[i, j]]))
 
         # Plota trajetória
-        _, axis = plt.subplots(ncols=2, figsize=[2*6.4, 4.8])
-        if levels is not None:
-            axis[0].contour(x1, x2, f, levels=levels)
-        else:
+        # _, axis = plt.subplots(ncols=2, figsize=[2*6.4, 4.8])
+        # if levels is not None:
+        #     axis[0].contour(x1, x2, f, levels=levels)
+        # else:
             
             
             
-            axis[0].contour(x1, x2, f, levels=30)
-        axis[0].plot(self.xhist[:, 0], self.xhist[:, 1], '--*r')
-        axis[0].set_xlabel(r'$x_1$')
-        axis[0].set_ylabel(r'$x_2$')
-        axis[0].set_title('Problema')
-        axis[0].grid()
+        #     axis[0].contour(x1, x2, f, levels=30)
+        # axis[0].plot(self.xhist[:, 0], self.xhist[:, 1], '--*r')
+        # axis[0].set_xlabel(r'$x_1$')
+        # axis[0].set_ylabel(r'$x_2$')
+        # axis[0].set_title('Problema')
+        # axis[0].grid()
 
-        # Plota convergencia
-        axis[1].plot(self.fxhist, '--*')
-        axis[1].set_xlabel('Iterações')
-        axis[1].set_ylabel(r'$f(\mathbf{x})$')
-        axis[1].set_title('Convergência')
-        axis[1].grid()
+        # # Plota convergencia
+        # axis[1].plot(self.fxhist, '--*')
+        # axis[1].set_xlabel('Iterações')
+        # axis[1].set_ylabel(r'$f(\mathbf{x})$')
+        # axis[1].set_title('Convergência')
+        # axis[1].grid()
 
-        plt.tight_layout()
-        plt.show()
+        # plt.tight_layout()
+        # plt.show()
     
     def __str__(self):
         mensagem = ''
