@@ -1,8 +1,9 @@
 # vamos usar gradiente conjuggado, pois a funcao é continua, diferenciavel e tem muitas variaveis
 
 import numpy as np
-from scipy.optimize import minimize
 from arquivos_tc1.otimo import GradienteConjugado, SecaoAurea
+import time
+import matplotlib.pyplot as plt
 
 TEST_RANGE = 5
 MAX_ITER = 10
@@ -38,7 +39,18 @@ gc = GradienteConjugado(unidimensional=otimizacao_unidimensional,
 # Gera solucao inicial
 n = TEST_RANGE - 1
 w0 = np.zeros(n)
+
+start_time = time.time()
 resultado = gc.resolva(funcaoobjetivo, w0)
+print(time.time() - start_time)
+
+plt.plot(resultado.fxhist, marker='o', color='r')
+
+plt.xlabel('Iteração')
+plt.ylabel('Função Objetivo')
+plt.title('Convergência do método')
+
+plt.show()
 
 # Pesos otimizados
 # custo_final = ???

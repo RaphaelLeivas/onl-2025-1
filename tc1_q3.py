@@ -1,6 +1,7 @@
 import numpy as np
 from arquivos_tc1.otimo import HookeJeeves
 import matplotlib.pyplot as plt
+import time
 
 # Função de custo negativa (para maximização do lucro)
 def funcaoobjetivo(x):
@@ -46,7 +47,9 @@ metodo = HookeJeeves(
     passo_direcao=0.5,
     precisao=1e-2
 )
+start_time = time.time()
 resultado = metodo.resolva(funcaoobjetivo, ponto_inicial)
+print(time.time() - start_time)
 
 print(resultado)
 

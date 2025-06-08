@@ -2,6 +2,7 @@ import numpy as np
 from scipy.integrate import odeint
 import matplotlib.pyplot as plt
 from scipy.optimize import minimize
+import time
 
 # Função que representa o sistema de controle (sistema de primeira ordem)
 def system(T, t, u):
@@ -62,8 +63,10 @@ def funcaoobjetivo(x):
 ponto_inicial = [1.0, 50.1, 13]
 
 """ IMPLEMENTE AQUI A CHAMADA DO ALGORTIMO DE OTIMIZAÇÃO """
+start_time = time.time()
 
 result = minimize(funcaoobjetivo, ponto_inicial, method='BFGS')  #  método Quasi Newton
+print(time.time() - start_time)
 
 if result.success:
     Kp_opt, Ki_opt, Kd_opt = result.x
