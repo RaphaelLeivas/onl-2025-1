@@ -1,5 +1,6 @@
 import numpy as np
 from arquivos_tc1.otimo import HookeJeeves
+import matplotlib.pyplot as plt
 
 # Função de custo negativa (para maximização do lucro)
 def funcaoobjetivo(x):
@@ -41,7 +42,10 @@ def funcaoobjetivo(x):
 ponto_inicial = [10, 10, 10000]
 
 """ IMPLEMENTE AQUI A CHAMADA DO ALGORTIMO DE OTIMIZAÇÃO """
-metodo = HookeJeeves()
+metodo = HookeJeeves(
+    passo_direcao=0.5,
+    precisao=1e-2
+)
 resultado = metodo.resolva(funcaoobjetivo, ponto_inicial)
 
 print(resultado)
@@ -54,3 +58,12 @@ lucro = funcaoobjetivo(resultado.x) * (-1)
 
 print(f"Parâmetros ótimos: Desconto = {d:.2f}%, Tempo = {t:.2f} dias, Orçamento = ${m:.2f}")
 print(f"Lucro máximo estimado: R${lucro:.2f}")
+
+
+plt.plot(resultado.fxhist * (-1), marker='o', color='r')
+
+plt.xlabel('Iteração')
+plt.ylabel('Função Objetivo')
+plt.title('Convergência do método')
+
+plt.show()
