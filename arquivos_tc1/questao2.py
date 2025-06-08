@@ -1,4 +1,12 @@
 import numpy as np
+from scipy.integrate import odeint
+import matplotlib.pyplot as plt
+from scipy.optimize import minimize
+import os
+
+# Define o diretório de execução para garantir que os arquivos sejam encontrados corretamente
+os.chdir(r"C:\Users\mathe\OneDrive\Área de Trabalho\otimizacao nao linear")
+print("Diretório de execução atualizado para:", os.getcwd())
 
 # Função sigmoide
 def sigmoid(z):
@@ -26,10 +34,19 @@ w0 = np.zeros(n)
 
 """ IMPLEMENTE AQUI A CHAMADA DO ALGORTIMO DE OTIMIZAÇÃO """
 
+#result = minimize(funcaoobjetivo, w0, method='CG')  #  
+
+print("Otimizando...")
+result = minimize(funcaoobjetivo, w0, method='CG')
+print("Finalizou minimização.")
+
 # Pesos otimizados
-custo_final = ???
-numero_iteracoes = ???
-numero_avaliacoes = ???
+w_otimo = result.x
+custo_final = result.fun 
+numero_iteracoes = result.nit 
+
+numero_avaliacoes =  result.nfev
 print(f"Custo final: {custo_final:.4f}")
 print(f"Número de iterações: {numero_iteracoes}")
 print(f"Número de avaliações da função-objetivo: {numero_avaliacoes}")
+print(f"w ótimo: {w_otimo}")
