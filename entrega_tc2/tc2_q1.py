@@ -48,7 +48,7 @@ def check_restricoes(rest_list, rest_tipos, sol):
 # Configuração
 restricoes = [restricao1, restricao2, restricao3, restricao4, restricao5, restricao6, restricao7]
 tipos = np.array(['<', '<', '<', '>', '>', '<', '<'])
-x0 = np.array([10, 10])
+x0 = np.array([1, 3])
 
 busca_1d = SecaoAurea(precisao=1e-3)
 irrestrito = BFGS(unidimensional=busca_1d)
